@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List <%= locals.id %></title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div id="jsontext">
+      JSON: <%= locals.json || `List with id ${locals.id} does not exist`%>
+    </div>
+    
+    <button onclick="Delete(<%= locals.id %>)">Delete List</button>
+  </body>
+  <script>
+    function Delete(id) {
+      fetch(`http://localhost:3000/${id}`, {
+        method: "DELETE"
+      })
+    }
+  </script>
+</html>
